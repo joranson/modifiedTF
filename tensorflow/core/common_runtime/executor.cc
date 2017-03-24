@@ -1689,12 +1689,13 @@ bool ExecutorState::NodeDone(const Status& s, const Node* node,
                              TaggedNodeReadyQueue* inline_ready) {
   if (stats) {
     nodestats::SetAllEnd(stats);
-    if (!SetTimelineLabel(node, stats)) {
+    SetTimelineLabel(node, stats);
+	//if (!SetTimelineLabel(node, stats)) {
       // Only record non-transfer nodes.
       stats_collector_->Save(impl_->params_.device->name(), stats);
-    } else {
-      delete stats;
-    }
+    //} else {
+      //delete stats;
+    //}
   }
 
   Rendezvous* captured_rendezvous = nullptr;  // Will be set on error.
