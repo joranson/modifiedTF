@@ -33,6 +33,8 @@ limitations under the License.
 #include "tensorflow/core/platform/mutex.h"
 #include "tensorflow/core/platform/types.h"
 
+using namespace std;
+
 namespace tensorflow {
 
 BaseRendezvousMgr::BaseRendezvousMgr(const WorkerEnv* env) : worker_env_(env) {}
@@ -157,6 +159,9 @@ Status BaseRemoteRendezvous::Send(const Rendezvous::ParsedKey& parsed,
     return errors::InvalidArgument("Invalid rendezvous key (src): ",
                                    parsed.FullKey(), " @ ", env_->worker_name);
   }
+
+  std::string valueS = "Send data with estimated " + to_string(*val->TotalBytes()) + " bytes. " + "Edge name: " + *parsed->edge_name->ToString()
+  std::cout << valueS
   // Buffers "val" and "device_context" in local_.
   return local_->Send(parsed, args, val, is_dead);
 }
