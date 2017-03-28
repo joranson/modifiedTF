@@ -161,7 +161,7 @@ Status BaseRemoteRendezvous::Send(const Rendezvous::ParsedKey& parsed,
   }
 
   std::string valueS = "Send data with estimated " + to_string(val.TotalBytes()) + " bytes. " + "Edge name: " + parsed.edge_name.ToString();
-  std::cout << valueS;
+  std::cout << valueS << std::endl;
   // Buffers "val" and "device_context" in local_.
   return local_->Send(parsed, args, val, is_dead);
 }
