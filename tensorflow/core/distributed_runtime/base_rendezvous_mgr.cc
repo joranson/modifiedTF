@@ -161,7 +161,7 @@ Status BaseRemoteRendezvous::Send(const Rendezvous::ParsedKey& parsed,
   }
 
   std::string valueS = "Send data with estimated " + to_string(val.TotalBytes()) + " bytes. " + "Edge name: " + parsed.edge_name.ToString() + ". src_device: " + parsed.src_device.ToString() + ". dst_device: " + parsed.dst_device.ToString();
-  std::cout << std::to_string((std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now()time_since_epoch())).count())+valueS << std::endl;
+  std::cout << std::to_string((std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch())).count())+valueS << std::endl;
   // Buffers "val" and "device_context" in local_.
   return local_->Send(parsed, args, val, is_dead);
 }
